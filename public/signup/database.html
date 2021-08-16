@@ -1,0 +1,11 @@
+if (!empty($Username) && !empty($Password) && !empty($Email) && !is_numeric($Username) && trim($Username)) {
+    $User_id = random_num(10);
+    $query = "insert into registration ( username, email, phone_number, password, gender, sector_id, user_id) 
+        values ( '$Username','$Email',$Phone_number,'$Password','$Gender','$Sector_id','$User_id')";
+
+    mysqli_query($conn, $query);
+    header("Location: ../signin/login.php");
+    die;
+} else {
+    echo  "please enter some valid information!";
+}
