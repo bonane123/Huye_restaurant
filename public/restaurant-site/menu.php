@@ -16,26 +16,22 @@ $user_data = check_login($connection);
             <center>
                 <h1>Categories</h1>
             </center>
-            <?php
-            $query = "SELECT * FROM menu_categories";
-            $result = mysqli_query($connection, $query);
-            $data = mysqli_num_rows($result);
-            if ($data != 0) {
-                //echo "There is something in the database";
-                while ($row = mysqli_fetch_assoc($result)) {
-            ?>
-                    <a href="../restaurant-site/menu.php?categoryID=<?php echo $row['category_id']; ?> " id="category">
-                        <p><?php echo $row['category_name']; ?></p>
-                    </a><br>
-
-
-
-            <?php
+            <select name=" categoryId" id="" style="width: 100%; padding: 2px 1.5rem; height: 40px; font-family:Arial, Helvetica, sans-serif; font-size:20px; border-radius:5px;">
+                <option value="0" disabled selected>Cell</option>
+                <?php
+                $query = "SELECT * FROM categories";
+                $result = mysqli_query($connection, $query);
+                if ($result) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                ?>
+                        <option value="<?php echo $row['category_id']; ?>"><?php echo $row['category_name']; ?></option>
+                    <?php
+                    }
+                    ?>
+                <?php
                 }
-            } else {
-                echo "No thing found";
-            }
-            ?>
+                ?>
+            </select>
             <img src=" ../images/restaurant.jpg" alt="restaurant-image">
         </div>
         <div class="menu-content">

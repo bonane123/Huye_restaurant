@@ -10,11 +10,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $Password = $_POST['password'];
     $Gender = $_POST['gender'];
     $User_id = $_POST['user_id'];
+    $cell = $_POST['cellId'];
 
     if (!empty($Username) && !empty($Password) && !empty($Phone_number) && !empty($Gender) && !empty($Email) && !is_numeric($Username) && trim($Username)) {
         $User_id = random_num(10);
-        $query = "insert into clients ( username, email, phone_number, password, gender, user_id) 
-        values ( '$Username','$Email',$Phone_number,'$Password','$Gender', $User_id)";
+        $query = "insert into clients ( username, email, phone_number, password, gender, user_id, cell_id) 
+        values ( '$Username','$Email',$Phone_number,'$Password','$Gender', $User_id, $cell)";
         $result = mysqli_query($connection, $query);
         if ($result) {
             header("Location: ../signin/login.php");
@@ -42,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <div class="container">
         <div class="form-container">
             <div class="signup">
-                <form class="sign-up-form" method="post">
+                <form action="" class="sign-up-form" method="post">
                     <h2 class="title">Sign Up</h2>
 
                     <div class="input-field">
@@ -65,6 +66,24 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         <i class="fas fa-lock"></i>
                         <input type="password" name="password" id="password" placeholder="Password" required>
                     </div>
+                    <div class="select-field">
+                        <select name=" cellId" id="" style="width: 100%; padding: 2px 1.5rem; height: 40px; font-family:Arial, Helvetica, sans-serif; font-size:20px; border-radius:5px;">
+                            <option value="0" disabled selected>Cell</option>
+                            <?php
+                            $query = "SELECT * FROM cells";
+                            $result = mysqli_query($connection, $query);
+                            if ($result) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                            ?>
+                                    <option value="<?php echo $row['cell_id']; ?>"><?php echo $row['cell_name']; ?></option>
+                                <?php
+                                }
+                                ?>
+                            <?php
+                            }
+                            ?>
+                        </select>
+                    </div>
                     <div class="radio">
                         <input type="radio" name="gender" value="Male">
                         <label class="gender">Male</label>
@@ -73,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     </div>
 
 
-                    <input type="submit" value="Sign Up" class="btn">
+                    <input type="submit" name="signup" value="Sign Up" class="btn">
                     <p class="social-text">Sign Up with social media</p>
                     <div class="social-media">
                         <a href="#" target="_blank" class="social-icon">

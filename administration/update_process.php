@@ -3,11 +3,11 @@ include("connection.php");
 $updateId = $_GET['ID'];
 if (isset($_POST['update'])) {
 
-    $product = $_POST['prodname'];
-    $description = $_POST['description'];
-    $price = $_POST['price'];
-    if (!empty($_POST['prodname']) || !empty($_POST['description']) || !empty($_POST['price'])) {
-        $query3 = "UPDATE products SET prodname = '" . $product . "', description = '" . $description . "', price = '" . $price . "' WHERE id = '" . $updateId . "'";
+    $restaurant = $_POST['restaurant_name'];
+    $working = $_POST['working_hours'];
+    $cell = $_POST['cell_id'];
+    if (!empty($_POST['restaurant_name']) || !empty($_POST['working_hours']) || !empty($_POST['cell_id'])) {
+        $query3 = "UPDATE restaurants SET restaurant_name = '" . $restaurant . "', working_hours = '" . $working . "'  cell_id = '" . $cell . "' WHERE restaurant_id = '" . $updateId . "'";
         $result3 = mysqli_query($connection, $query3);
         if ($result3) {
             header("Location: dashboard.php");

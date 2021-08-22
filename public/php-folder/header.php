@@ -19,9 +19,10 @@
         </div>
         <div id="menu-bar" class="fas fa-bars"></div>
         <nav class="navbar">
-            <a href="../restaurant-site/home.php">Home</a>
+
+            <a href="../restaurant-site/home.php">Categories</a>
             <a href="../restaurant-site/menu.php">Menu</a>
-            <a href="../restaurant-site/about.php">About</a>
+
             <a href="../restaurant-site/order.php">Order</a>
 
             <script>
