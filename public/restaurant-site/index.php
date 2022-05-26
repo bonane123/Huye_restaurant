@@ -24,7 +24,7 @@
             <a href="../restaurant-site/restaurant.php">Restaurants</a>
             <a href="../restaurant-site/menu.php">About</a>
             <a href="../restaurant-site/about.php">Contact US</a>
-            <a href="../signin/login.php">Login</a>
+            <a href="../forms/forms.php">Login</a>
 
             <script>
                 var mode = document.getElementById("mode");
